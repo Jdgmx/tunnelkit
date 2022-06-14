@@ -25,7 +25,7 @@
 
 import Cocoa
 import TunnelKitManager
-import TunnelKitWireGuard
+//import TunnelKitWireGuard
 
 private let appGroup = "DTDYD63ZX9.group.com.algoritmico.TunnelKit.Demo"
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19455"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -149,8 +149,8 @@
                                                 <action selector="paste:" target="Ady-hI-5gd" id="UvS-8e-Qdg"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Paste and Match Style" keyEquivalent="V" id="WeT-3V-zwk">
-                                            <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                        <menuItem title="Paste and Match Style" keyEquivalent="v" id="WeT-3V-zwk">
+                                            <modifierMask key="keyEquivalentModifierMask" shift="YES" command="YES"/>
                                             <connections>
                                                 <action selector="pasteAsPlainText:" target="Ady-hI-5gd" id="cEh-KX-wJQ"/>
                                             </connections>
@@ -890,7 +890,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nd2-H7-u7j">
-                                <rect key="frame" x="13" y="13" width="454" height="32"/>
+                                <rect key="frame" x="13" y="13" width="224" height="32"/>
                                 <buttonCell key="cell" type="push" title="Connect" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bKB-ql-HWr">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -899,18 +899,31 @@
                                     <action selector="connectionClicked:" target="XfG-lQ-9wD" id="Wxi-t1-Xkk"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oKK-Bs-FDo">
+                                <rect key="frame" x="243" y="13" width="224" height="32"/>
+                                <buttonCell key="cell" type="push" title="Load Ovpn..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ko2-au-nUL">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="loadOVONConfFile:" target="XfG-lQ-9wD" id="RHJ-GD-QO1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="et1-VP-AGe" firstAttribute="width" secondItem="sFz-8v-h8e" secondAttribute="width" id="4Gv-dj-kcY"/>
+                            <constraint firstItem="nd2-H7-u7j" firstAttribute="centerY" secondItem="oKK-Bs-FDo" secondAttribute="centerY" id="5F3-9D-NLL"/>
                             <constraint firstItem="nd2-H7-u7j" firstAttribute="top" secondItem="sFz-8v-h8e" secondAttribute="bottom" constant="20" id="5q8-DS-aIh"/>
                             <constraint firstItem="et1-VP-AGe" firstAttribute="leading" secondItem="sFz-8v-h8e" secondAttribute="trailing" constant="20" id="9Mq-Mv-kga"/>
                             <constraint firstAttribute="trailing" secondItem="P4h-p9-zCb" secondAttribute="trailing" constant="20" id="Drw-b1-BNu"/>
+                            <constraint firstItem="nd2-H7-u7j" firstAttribute="trailing" secondItem="sFz-8v-h8e" secondAttribute="trailing" id="EEH-06-vVG"/>
                             <constraint firstItem="et1-VP-AGe" firstAttribute="top" secondItem="sFz-8v-h8e" secondAttribute="top" id="EEi-XF-PFd"/>
                             <constraint firstItem="nd2-H7-u7j" firstAttribute="leading" secondItem="sFz-8v-h8e" secondAttribute="leading" id="JxD-ho-4hD"/>
                             <constraint firstItem="LIN-Ps-ANN" firstAttribute="top" secondItem="i3T-uV-wV3" secondAttribute="top" id="KJu-xG-JnJ"/>
-                            <constraint firstItem="nd2-H7-u7j" firstAttribute="trailing" secondItem="et1-VP-AGe" secondAttribute="trailing" id="Mwb-AU-hUO"/>
+                            <constraint firstItem="oKK-Bs-FDo" firstAttribute="leading" secondItem="et1-VP-AGe" secondAttribute="leading" id="MIv-Vp-vKK"/>
                             <constraint firstItem="et1-VP-AGe" firstAttribute="trailing" secondItem="P4h-p9-zCb" secondAttribute="trailing" id="Rbb-6h-w4w"/>
                             <constraint firstItem="P4h-p9-zCb" firstAttribute="leading" secondItem="LIN-Ps-ANN" secondAttribute="trailing" constant="20" id="Rge-dl-vui"/>
+                            <constraint firstItem="oKK-Bs-FDo" firstAttribute="trailing" secondItem="et1-VP-AGe" secondAttribute="trailing" id="Ska-WE-kpb"/>
                             <constraint firstItem="i3T-uV-wV3" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="Xha-4o-0rg"/>
                             <constraint firstItem="sFz-8v-h8e" firstAttribute="top" secondItem="i3T-uV-wV3" secondAttribute="bottom" constant="18" id="bRU-rq-aRR"/>
                             <constraint firstItem="LIN-Ps-ANN" firstAttribute="leading" secondItem="i3T-uV-wV3" secondAttribute="trailing" constant="20" id="cDe-a1-OxC"/>

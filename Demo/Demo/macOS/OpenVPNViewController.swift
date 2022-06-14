@@ -27,10 +27,11 @@ import Cocoa
 import TunnelKitCore
 import TunnelKitManager
 import TunnelKitOpenVPN
+import TunnelKitOpenVPNCore
 
-private let appGroup = "DTDYD63ZX9.group.com.algoritmico.TunnelKit.Demo"
+private let appGroup = "XHE67XE9DA.group.com.algoritmico.TunnelKit.Demo"
 
-private let tunnelIdentifier = "com.algoritmico.macos.TunnelKit.Demo.OpenVPN.Tunnel"
+private let tunnelIdentifier = "dev.jcat.algoritmico.macos.TunnelKit.Demo.OpenVPN.Tunnel"
 
 class OpenVPNViewController: NSViewController {
     @IBOutlet var textUsername: NSTextField!
@@ -127,7 +128,52 @@ class OpenVPNViewController: NSViewController {
             )
         }
     }
-    
+
+	@IBAction func loadOVONConfFile(_ sender: Any)
+	{
+		let open = NSOpenPanel()
+
+		open.canChooseFiles = true
+		open.message = "Choose OVPN config file"
+
+		Task {
+			let response = await open.beginSheetModal(for: self.view.window!)
+			if response == .OK, let url = open.url {
+				await self.connectWithOVPN(conf: url)
+			}
+		}
+	}
+
+	func connectWithOVPN(conf ovpnCfg: URL) async
+	{
+		if let conf = try? OpenVPN.ConfigurationParser.parsed(fromURL: ovpnCfg) {
+
+			/**/ print("conf = \(conf)")
+
+			let ovpnConf = conf.configuration // OpenVPN.Configuration
+			let builder = ovpnConf.builder()
+			let customConfiguration = builder.build()
+
+			/**/ print("customConfiguration = \(customConfiguration)")
+
+
+			cfg = OpenVPN.ProviderConfiguration("TunnelKit.OpenVPN",
+															appGroup: appGroup,
+															configuration: customConfiguration)
+
+			/**/ print("cfg = \(String(describing: cfg))")
+
+			do {
+				try await vpn.reconnect(tunnelIdentifier,
+												configuration: cfg!, // needs to be NetworkExtensionConfiguration
+												extra: NetworkExtensionExtra(),
+												after: .seconds(2))
+			} catch (let error) {
+				print("**** The error is \(error.localizedDescription)")
+			}
+		}
+	}
+
     func disconnect() {
         Task {
             await vpn.disconnect()
