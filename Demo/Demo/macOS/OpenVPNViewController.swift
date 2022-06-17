@@ -29,7 +29,7 @@ import TunnelKitManager
 import TunnelKitOpenVPN
 import TunnelKitOpenVPNCore
 
-private let appGroup = "XHE67XE9DA.group.com.algoritmico.TunnelKit.Demo"
+private let appGroup = "XHE67XE9DA.group.dev.jcat.algoritmico.TunnelKit.Demo"
 
 private let tunnelIdentifier = "dev.jcat.algoritmico.macos.TunnelKit.Demo.OpenVPN.Tunnel"
 

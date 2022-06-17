@@ -4,11 +4,11 @@
 <dict>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.com.algoritmico.TunnelKit</string>
+		<string>group.dev.jcat.algoritmico.TunnelKit</string>
 	</array>
 	<key>keychain-access-groups</key>
 	<array>
-		<string>$(AppIdentifierPrefix)group.com.algoritmico.TunnelKit</string>
+		<string>$(AppIdentifierPrefix)group.dev.jcat.algoritmico.TunnelKit</string>
 	</array>
 </dict>
 </plist>

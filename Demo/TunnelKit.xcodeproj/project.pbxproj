@@ -31,7 +31,6 @@
 		0E1108B61F77B9F900A92462 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E1108B41F77B9F900A92462 /* LaunchScreen.storyboard */; };
 		0E80FA5127396F5F000F5A45 /* TunnelKitOpenVPNAppExtension in Frameworks */ = {isa = PBXBuildFile; productRef = 0E80FA5027396F5F000F5A45 /* TunnelKitOpenVPNAppExtension */; };
 		0E80FA5327396F66000F5A45 /* TunnelKitOpenVPNAppExtension in Frameworks */ = {isa = PBXBuildFile; productRef = 0E80FA5227396F66000F5A45 /* TunnelKitOpenVPNAppExtension */; };
-		0E81EB4C274BACF200E5F2D3 /* WireGuardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81EB4B274BACF200E5F2D3 /* WireGuardViewController.swift */; };
 		0EFD5B312727250500C7D5FD /* TunnelKitOpenVPN in Frameworks */ = {isa = PBXBuildFile; productRef = 0EFD5B302727250500C7D5FD /* TunnelKitOpenVPN */; };
 		0EFD5B332727250B00C7D5FD /* TunnelKitOpenVPN in Frameworks */ = {isa = PBXBuildFile; productRef = 0EFD5B322727250B00C7D5FD /* TunnelKitOpenVPN */; };
 /* End PBXBuildFile section */
@@ -532,7 +531,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E0541D825A2355000EFC5FF /* Configuration.swift in Sources */,
-				0E81EB4C274BACF200E5F2D3 /* WireGuardViewController.swift in Sources */,
 				0E05418825A2334500EFC5FF /* OpenVPNViewController.swift in Sources */,
 				0E05418725A2334500EFC5FF /* AppDelegate.swift in Sources */,
 			);

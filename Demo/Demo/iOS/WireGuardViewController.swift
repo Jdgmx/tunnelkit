@@ -27,9 +27,9 @@ import UIKit
 import TunnelKitManager
 import TunnelKitWireGuard
 
-private let appGroup = "group.com.algoritmico.TunnelKit.Demo"
+private let appGroup = "group.dev.jcat.algoritmico.TunnelKit.Demo"
 
-private let tunnelIdentifier = "com.algoritmico.ios.TunnelKit.Demo.WireGuard.Tunnel"
+private let tunnelIdentifier = "dev.jcat.algoritmico.ios.TunnelKit.Demo.WireGuard.Tunnel"
 
 class WireGuardViewController: UIViewController {
     @IBOutlet var textClientPrivateKey: UITextField!

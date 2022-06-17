@@ -37,7 +37,7 @@
 import Foundation
 
 public class CoreConfiguration {
-    public static let identifier = "com.algoritmico.TunnelKit"
+    public static let identifier = "dev.jcat.algoritmico.TunnelKit"
     
     public static let version: String = {
         let bundle = Bundle(for: CoreConfiguration.self)

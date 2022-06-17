@@ -57,7 +57,7 @@ class AppExtensionTests: XCTestCase {
 
     func testConfiguration() {
         let bundleIdentifier = "com.example.Provider"
-        let appGroup = "group.com.algoritmico.TunnelKit"
+        let appGroup = "group.dev.jcat.algoritmico.TunnelKit"
 
         let hostname = "example.com"
         let port: UInt16 = 1234

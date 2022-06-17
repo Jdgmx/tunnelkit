@@ -28,9 +28,9 @@ import TunnelKitCore
 import TunnelKitManager
 import TunnelKitOpenVPN
 
-private let appGroup = "group.com.algoritmico.TunnelKit.Demo"
+private let appGroup = "group.dev.jcat.algoritmico.TunnelKit.Demo"
 
-private let tunnelIdentifier = "com.algoritmico.ios.TunnelKit.Demo.OpenVPN.Tunnel"
+private let tunnelIdentifier = "dev.jcat.algoritmico.ios.TunnelKit.Demo.OpenVPN.Tunnel"
 
 class OpenVPNViewController: UIViewController {
     @IBOutlet var textUsername: UITextField!
