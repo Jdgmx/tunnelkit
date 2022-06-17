@@ -100,8 +100,6 @@ open class OpenVPNTunnelProvider: NEPacketTunnelProvider {
     
     // MARK: Constants
     
-    private var logFile: FileDestination?
-    
     private let tunnelQueue = DispatchQueue(label: OpenVPNTunnelProvider.description(), qos: .utility)
     
     private let prngSeedLength = 64
@@ -173,10 +171,7 @@ open class OpenVPNTunnelProvider: NEPacketTunnelProvider {
         }
 
         // prepare for logging (append)
-        configureLogging(
-            debug: cfg.shouldDebug,
-            customFormat: cfg.debugLogFormat
-        )
+        configureLogging()
 
         // logging only ACTIVE from now on
         log.info("")
@@ -202,7 +197,7 @@ open class OpenVPNTunnelProvider: NEPacketTunnelProvider {
         }
 
         log.info("Starting tunnel...")
-        cfg.lastError = nil
+        cfg._appexSetLastError(nil)
         
         guard OpenVPN.prepareRandomNumberGenerator(seedLength: prngSeedLength) else {
             completionHandler(OpenVPNProviderConfigurationError.prngInitialization)
@@ -240,7 +235,7 @@ open class OpenVPNTunnelProvider: NEPacketTunnelProvider {
     open override func stopTunnel(with reason: NEProviderStopReason, completionHandler: @escaping () -> Void) {
         pendingStartHandler = nil
         log.info("Stopping tunnel...")
-        cfg.lastError = nil
+        cfg._appexSetLastError(nil)
 
         guard let session = session else {
             flushLog()
@@ -310,7 +305,7 @@ open class OpenVPNTunnelProvider: NEPacketTunnelProvider {
     
     private func connectTunnel(via socket: GenericSocket) {
         log.info("Will connect to \(socket)")
-        cfg.lastError = nil
+        cfg._appexSetLastError(nil)
 
         log.debug("Socket type is \(type(of: socket))")
         self.socket = socket
@@ -383,10 +378,10 @@ open class OpenVPNTunnelProvider: NEPacketTunnelProvider {
             self?.refreshDataCount()
         }
         guard isCountingData, let session = session, let dataCount = session.dataCount() else {
-            cfg.dataCount = nil
+            cfg._appexSetDataCount(nil)
             return
         }
-        cfg.dataCount = dataCount
+        cfg._appexSetDataCount(dataCount)
     }
 }
 
@@ -524,7 +519,7 @@ extension OpenVPNTunnelProvider: OpenVPNSessionDelegate {
             }
         }
 
-        cfg.serverConfiguration = session.serverConfiguration() as? OpenVPN.Configuration
+        cfg._appexSetServerConfiguration(session.serverConfiguration() as? OpenVPN.Configuration)
 
         bringNetworkUp(remoteAddress: remoteAddress, localOptions: session.configuration, options: options) { (error) in
 
@@ -552,7 +547,7 @@ extension OpenVPNTunnelProvider: OpenVPNSessionDelegate {
     }
     
     public func sessionDidStop(_: OpenVPNSession, withError error: Error?, shouldReconnect: Bool) {
-        cfg.serverConfiguration = nil
+        cfg._appexSetServerConfiguration(nil)
 
         if let error = error {
             log.error("Session did stop with error: \(error)")
@@ -814,11 +809,11 @@ extension OpenVPNTunnelProvider {
     
     // MARK: Logging
     
-    private func configureLogging(debug: Bool, customFormat: String?) {
-        let logLevel: SwiftyBeaver.Level = (debug ? debugLogLevel : .info)
-        let logFormat = customFormat ?? "$Dyyyy-MM-dd HH:mm:ss.SSS$d $L $N.$F:$l - $M"
+    private func configureLogging() {
+        let logLevel: SwiftyBeaver.Level = (cfg.shouldDebug ? debugLogLevel : .info)
+        let logFormat = cfg.debugLogFormat ?? "$Dyyyy-MM-dd HH:mm:ss.SSS$d $L $N.$F:$l - $M"
         
-        if debug {
+        if cfg.shouldDebug {
             let console = ConsoleDestination()
             console.useNSLog = true
             console.minLevel = logLevel
@@ -826,13 +821,14 @@ extension OpenVPNTunnelProvider {
             log.addDestination(console)
         }
 
-        let file = FileDestination(logFileURL: cfg.urlForDebugLog)
+        let file = FileDestination(logFileURL: cfg._appexDebugLogURL)
         file.minLevel = logLevel
         file.format = logFormat
         file.logFileMaxSize = maxLogSize
         log.addDestination(file)
 
-        logFile = file
+        // store path for clients
+        cfg._appexSetDebugLogPath()
     }
     
     private func flushLog() {
@@ -862,7 +858,7 @@ extension OpenVPNTunnelProvider {
     // MARK: Errors
     
     private func setErrorStatus(with error: Error) {
-        cfg.lastError = unifiedError(from: error)
+        cfg._appexSetLastError(unifiedError(from: error))
     }
     
     private func unifiedError(from error: Error) -> OpenVPNProviderError {
