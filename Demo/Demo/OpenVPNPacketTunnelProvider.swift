@@ -23,7 +23,21 @@
 //  along with TunnelKit.  If not, see <http://www.gnu.org/licenses/>.
 //
 
+import Foundation
 import TunnelKitOpenVPNAppExtension
 
-class PacketTunnelProvider: OpenVPNTunnelProvider {
+class PacketTunnelProvider: OpenVPNTunnelProvider
+{
+	override func startTunnel(options: [String : NSObject]? = nil, completionHandler: @escaping (Error?) -> Void)
+	{
+		let appVersionNumber = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
+		let appBuildNumber = Int(Bundle.main.infoDictionary![kCFBundleVersionKey as String] as! String)!
+
+		appVersion = "Dispel \(appVersionNumber) \(appBuildNumber)"
+		dnsTimeout = 5000
+		logSeparator = "--- EOF ---"
+		dataCountInterval = 5000
+
+		super.startTunnel(options: options, completionHandler: completionHandler)
+	}
 }

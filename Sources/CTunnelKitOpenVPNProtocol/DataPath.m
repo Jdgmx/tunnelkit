@@ -116,10 +116,20 @@
 
         [self.encrypter setPeerId:peerId];
         [self.decrypter setPeerId:peerId];
+
+		 /**/ NSLog(@"**** about to setCompressionFraming: %lu", compressionFraming);
+
         [self setCompressionFraming:compressionFraming];
+
+		 /**/ NSLog(@"**** did setCompressionFraming");
         
         if ([LZOFactory isSupported] && (compressionAlgorithm == CompressionAlgorithmNativeLZO)) {
+
+			  /**/ NSLog(@"**** about to LZOFactory");
+
             self.lzo = [LZOFactory create];
+
+			  /**/ NSLog(@"**** did LZOFactory: %@", self.lzo);
         }
     }
     return self;

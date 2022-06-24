@@ -33,6 +33,8 @@
 		0E80FA5327396F66000F5A45 /* TunnelKitOpenVPNAppExtension in Frameworks */ = {isa = PBXBuildFile; productRef = 0E80FA5227396F66000F5A45 /* TunnelKitOpenVPNAppExtension */; };
 		0EFD5B312727250500C7D5FD /* TunnelKitOpenVPN in Frameworks */ = {isa = PBXBuildFile; productRef = 0EFD5B302727250500C7D5FD /* TunnelKitOpenVPN */; };
 		0EFD5B332727250B00C7D5FD /* TunnelKitOpenVPN in Frameworks */ = {isa = PBXBuildFile; productRef = 0EFD5B322727250B00C7D5FD /* TunnelKitOpenVPN */; };
+		D2ED48AB286573E90002B62C /* TunnelKitLZO in Frameworks */ = {isa = PBXBuildFile; productRef = D2ED48AA286573E90002B62C /* TunnelKitLZO */; };
+		D2ED48AD2865744C0002B62C /* TunnelKitLZO in Frameworks */ = {isa = PBXBuildFile; productRef = D2ED48AC2865744C0002B62C /* TunnelKitLZO */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -179,6 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0EFD5B312727250500C7D5FD /* TunnelKitOpenVPN in Frameworks */,
+				D2ED48AB286573E90002B62C /* TunnelKitLZO in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,6 +190,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E80FA5327396F66000F5A45 /* TunnelKitOpenVPNAppExtension in Frameworks */,
+				D2ED48AD2865744C0002B62C /* TunnelKitLZO in Frameworks */,
 				0E05427825A239C600EFC5FF /* NetworkExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -373,6 +377,7 @@
 			name = "TunnelKitDemo-macOS";
 			packageProductDependencies = (
 				0EFD5B302727250500C7D5FD /* TunnelKitOpenVPN */,
+				D2ED48AA286573E90002B62C /* TunnelKitLZO */,
 			);
 			productName = Demo;
 			productReference = 0E05422C25A236EB00EFC5FF /* TunnelKitDemo-macOS.app */;
@@ -393,6 +398,7 @@
 			name = "TunnelKitDemoOpenVPNTunnel-macOS";
 			packageProductDependencies = (
 				0E80FA5227396F66000F5A45 /* TunnelKitOpenVPNAppExtension */,
+				D2ED48AC2865744C0002B62C /* TunnelKitLZO */,
 			);
 			productName = Tunnel;
 			productReference = 0E05427725A239C600EFC5FF /* TunnelKitDemoOpenVPNTunnel-macOS.appex */;
@@ -978,162 +984,6 @@
 			};
 			name = Release;
 		};
-		0E81EB56274BB0D000E5F2D3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-			};
-			name = Debug;
-		};
-		0E81EB57274BB0D000E5F2D3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-			};
-			name = Release;
-		};
-		0E833A8F274BC39C008EA397 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_ENTITLEMENTS = Demo/iOS/DemoTunnel.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = XHE67XE9DA;
-				INFOPLIST_FILE = Demo/DemoTunnel.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.jcat.algoritmico.ios.TunnelKit.Demo.WireGuard.Tunnel;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		0E833A90274BC39C008EA397 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_ENTITLEMENTS = Demo/iOS/DemoTunnel.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = XHE67XE9DA;
-				INFOPLIST_FILE = Demo/DemoTunnel.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.jcat.algoritmico.ios.TunnelKit.Demo.WireGuard.Tunnel;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		0E833AA0274BC3B2008EA397 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_ENTITLEMENTS = Demo/macOS/DemoTunnel.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = XHE67XE9DA;
-				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = Demo/DemoTunnel.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "TunnelKitDemoWireGuardTunnel-macOS";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2021 Davide De Rosa. All rights reserved.";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@executable_path/../../../../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.0;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.jcat.algoritmico.macos.TunnelKit.Demo.WireGuard.Tunnel;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		0E833AA1274BC3B2008EA397 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_ENTITLEMENTS = Demo/macOS/DemoTunnel.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = XHE67XE9DA;
-				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = Demo/DemoTunnel.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "TunnelKitDemoWireGuardTunnel-macOS";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2021 Davide De Rosa. All rights reserved.";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@executable_path/../../../../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.0;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.jcat.algoritmico.macos.TunnelKit.Demo.WireGuard.Tunnel;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
-		0EDD211F274BB4CF006833D1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		0EDD2120274BB4CF006833D1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1209,6 +1059,14 @@
 		0EFD5B322727250B00C7D5FD /* TunnelKitOpenVPN */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = TunnelKitOpenVPN;
+		};
+		D2ED48AA286573E90002B62C /* TunnelKitLZO */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = TunnelKitLZO;
+		};
+		D2ED48AC2865744C0002B62C /* TunnelKitLZO */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = TunnelKitLZO;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

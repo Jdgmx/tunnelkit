@@ -28,6 +28,7 @@ import TunnelKitCore
 import TunnelKitManager
 import TunnelKitOpenVPN
 import TunnelKitOpenVPNCore
+//import TunnelKitAppExtension
 
 private let appGroup = "XHE67XE9DA.group.dev.jcat.algoritmico.TunnelKit.Demo"
 
@@ -146,23 +147,29 @@ class OpenVPNViewController: NSViewController {
 
 	func connectWithOVPN(conf ovpnCfg: URL) async
 	{
-		if let conf = try? OpenVPN.ConfigurationParser.parsed(fromURL: ovpnCfg) {
+		do {
+			let confFile = try OpenVPN.ConfigurationParser.parsed(fromURL: ovpnCfg)
+			
+			// print("confFile = \(confFile)")
+			
+			let ovpnConf = confFile.configuration // OpenVPN.Configuration
 
-			/**/ print("conf = \(conf)")
+			var builder = ovpnConf.builder()
+			builder.compressionFraming = .compLZO
+			builder.compressionAlgorithm = .LZO
 
-			let ovpnConf = conf.configuration // OpenVPN.Configuration
-			let builder = ovpnConf.builder()
 			let customConfiguration = builder.build()
 
-			/**/ print("customConfiguration = \(customConfiguration)")
-
+			// print("customConfiguration = \(customConfiguration)")
 
 			cfg = OpenVPN.ProviderConfiguration("TunnelKit.OpenVPN",
 															appGroup: appGroup,
 															configuration: customConfiguration)
 
-			/**/ print("cfg = \(String(describing: cfg))")
+			cfg?.shouldDebug = true
 
+			/**/ print("cfg = \(String(describing: cfg))")
+			
 			do {
 				try await vpn.reconnect(tunnelIdentifier,
 												configuration: cfg!, // needs to be NetworkExtensionConfiguration
@@ -171,6 +178,8 @@ class OpenVPNViewController: NSViewController {
 			} catch (let error) {
 				print("**** The error is \(error.localizedDescription)")
 			}
+		} catch (let error) {
+			print("**** The error is \(error.localizedDescription)")
 		}
 	}
 
